@@ -1,3 +1,9 @@
+<% if flash[:my_errors] %>
+<% flash[:my_errors].each do %>
+    <p><%= error %></p>
+    <% end %>
+<% end %>
+
 <%= form_for @company do |f| %>
 	<ul>
 		<% if @company.errors.any? %>
@@ -11,13 +17,13 @@
 	<%= f.label :name %>
 	<%= f.text_field :name %>
 
-<p>Building Floors Available</p>
+<p><b>Building Floors Available</b></p>
 	<% Building.all.each do |b| %>
 		<%= f.fields_for :offices, b do |b_field| %>
 			<%= b_field.hidden_field :id %>
-			<%= b_field.label b.name %>
-			<%= b_field.collection_check_boxes :offices, b.empty_offices, :floor, :floor %>
-		<% end %>
+			<div><%= b_field.label b.name %>
+			<%= b_field.collection_check_boxes :offices, b.empty_offices, :floor, :floor %></div>
+		<br><% end %>
 	<% end %>
 	<br>
 

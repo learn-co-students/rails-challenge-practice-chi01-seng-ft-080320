@@ -1,0 +1,15 @@
+<b><%= @company.name %></b>
+<br>
+<h5><u>Our Offices</u></h5>
+<% @company.offices.each do |office| %>
+    <div> <%= link_to office.building.name, building_path(office.building.id) %>
+    <br><%= "#{office.building.address}, #{office.building.country} | Floor #{office.floor}" %>
+    </div>
+    <br>
+<% end %>
+<br>
+<h5><u>Our Employees</u></h5>
+<% @company.employees.each do |employee| %>
+    <%= employee.name %>
+    <br>
+<% end %>
