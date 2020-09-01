@@ -1,0 +1,9 @@
+<h1>Buildings</h1>
+<% @buildings.each do |building| %>
+<div> <%= link_to building.name, building_path(building) %> 
+    <%= "|" %>
+    <%= link_to "Update Building", edit_building_path(building) %>
+    <br>
+    <%= "Floors #{building.number_of_floors_available.to_sentence} currently available." %> </div>
+    <br>
+    <% end %>

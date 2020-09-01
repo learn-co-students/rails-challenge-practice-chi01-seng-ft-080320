@@ -1,0 +1,10 @@
+<b><%= @building.name %></b>
+<br>
+<i><%= "#{@building.address}, #{@building.country}" %></i>
+
+<h5>Our Companies</h5>
+<% @building.companies.each do |company| %>
+    <div> <%= company.name %> </div>
+    <% end %>
+<br>
+<h5>Total Rent - <%= "$#{@building.total_rent}" %></h5>
