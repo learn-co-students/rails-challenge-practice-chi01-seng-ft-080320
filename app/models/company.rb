@@ -3,6 +3,13 @@ class Company < ApplicationRecord
     has_many :buildings, through: :offices
     has_many :employees
     accepts_nested_attributes_for :offices
+    #why did office_ids work? Does this validation take care of both office_id and company_id???
+    validates :name, :office_ids, presence: true
+    
+
+
+
+
 
     def offices_attributes=(office_attributes)
         office_attributes.each do |key, value|

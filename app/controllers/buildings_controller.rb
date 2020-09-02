@@ -19,7 +19,6 @@ class BuildingsController < ApplicationController
             flash[:errors] = @building.errors.full_messages
             redirect_to edit_building_path(@building)
         end
-        byebug
     end
 
     private

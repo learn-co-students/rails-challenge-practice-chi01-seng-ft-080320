@@ -1,4 +1,7 @@
 
+<%if flash[:company]%>
+    <p style="color: green"><%= flash[:company]%></p>
+<%end%>
 
 <h1><%=@company.name%></h1>
 
@@ -29,6 +32,31 @@
 
 <h4>Total Rent</h4>
 <p><strong>$<%=@company.total_rent %></strong></p>
+
+
+
+<h4>Add new employee</h4>
+
+<%if flash[:errors]%>
+    <%flash[:errors].each do |error|%>
+    <p style="color: red"><%= error%></p>
+    <%end%>
+<%end%>
+
+<%if flash[:success]%>
+    <p style="color: green"><%= flash[:success]%></p>
+<%end%>
+
+
+<%= form_for @employee do |f| %>
+	<%= f.hidden_field :company_id, :value => @company.id %>
+
+    <%= f.label :name%>
+    <%= f.text_field :name%><br><br>
+
+    <%= f.submit%>
+
+<%end%>
 
 
 

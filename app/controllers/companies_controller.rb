@@ -7,6 +7,8 @@ class CompaniesController < ApplicationController
 
     def show
         @company = Company.find(params[:id])
+        @employee = Employee.new()
+
     end
 
     def new
@@ -20,14 +22,13 @@ class CompaniesController < ApplicationController
 
     def create
         @company = Company.create(company_params(:name, offices_attributes: [:id, :offices, {:offices => []}] ) )
-        byebug
         if @company.save
+            flash[:company] = "Welcome to our organization!!!"
             redirect_to company_path(@company)
         else 
             flash[:errors] = @company.errors.full_messages
             redirect_to new_company_path(@company)
         end
-        byebug
     end
 
     private
@@ -35,14 +36,5 @@ class CompaniesController < ApplicationController
     def company_params(*args)
         params.require(:company).permit(*args)
     end
-
-    # def create_offices(company)
-    #     offices_array= params[:company][:offices][:offices]
-    #     building = params[:company][:offices][:id]
-    #     offices_array.each do |office|
-    #         office.build(floor: )
-    #     end
-
-    # end
 
 end
