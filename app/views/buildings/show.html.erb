@@ -1,0 +1,23 @@
+<h1> Building Details </h1>
+
+
+<h2><%=@building.name%></h2>
+<p><strong>Location: </strong> <%=@building.country%></p>
+<p><strong>Address: </strong> <%=@building.address%></p>
+<p><strong>Rent per floor: </strong> <%=@building.rent_per_floor%></p>
+<p><strong>Number of floors: </strong> <%=@building.number_of_floors%></p>
+
+
+<p>Companies with offices in <%= @building.name%> </p>
+<ul>
+    <%@building.companies.each do |company| %>
+    <li><%=company.name%></li>
+    <%end%>
+</ul>
+
+<p>Current monthly revenue: $<%= @building.total_rent%> </p>
+
+
+
+
+
