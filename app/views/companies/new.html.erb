@@ -1,0 +1,26 @@
+<%= form_for @company do |f| %>
+	<ul>
+		<% if @company.errors.any? %>
+			<%= @company.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		<% end %>
+	</ul>
+
+<p>Company Details</p>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+<p>Building Floors Available</p>
+	<% Building.all.each do |b| %>
+		<%= f.fields_for :offices, b do |b_field| %>
+			<%= b_field.hidden_field :id %>
+			<%= b_field.label b.name %><br><br>
+			<%= b_field.collection_check_boxes :offices, b.empty_offices, :floor, :floor %><br><br>
+		<% end %>
+	<% end %>
+	<br>
+
+
+	<%= f.submit %>
+<% end %>

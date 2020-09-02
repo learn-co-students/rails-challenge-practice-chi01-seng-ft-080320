@@ -1,0 +1,16 @@
+<h1> Buildings </h1>
+
+
+<div>
+    <%@buildings.each do |building| %>
+    <h2><strong><%=link_to(building.name, building_path(building))%></strong></h2>
+    <div><span>Available floors</span></div>
+        <ul> 
+            <% building.available_floors.each do |floor|%>
+                <li> <%= floor%> </li>
+            <%end%>
+        </ul>
+    <%end%>
+</div>
+
+

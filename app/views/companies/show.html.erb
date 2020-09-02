@@ -1,0 +1,38 @@
+
+
+<h1><%=@company.name%></h1>
+
+
+    <%@company.buildings_and_offices.each do |company, floors|%>
+        <h2><%= company%></h2>
+        <span>Office floors</span>
+        <ul>
+
+        <% floors.each do|f|%>
+            <li><%= f%> </li>
+        <%end%>
+        </ul>
+    <%end%>
+
+
+<h4> Employee List </h4>
+<ol>
+    <%@company.employees.each do |employee|%>
+            <li><%= employee.name%> 
+                <button>  
+                    <%= link_to "Fire!!!", employee, method: :delete, data: { confirm: "Do you want to fire employee?" } %>
+                </button>
+            </li>
+    <%end%>
+</ol>
+
+
+<h4>Total Rent</h4>
+<p><strong>$<%=@company.total_rent %></strong></p>
+
+
+
+
+            
+
+
